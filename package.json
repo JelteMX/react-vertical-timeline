@@ -14,6 +14,7 @@
     "gh-pages:deploy": "gh-pages -d docs/build",
     "dist:css": "cleancss -o style.min.css style.css",
     "dist:es6": "del-cli ./dist-es6 && cross-env BABEL_ENV=es6 babel ./src --out-dir ./dist-es6",
+    "dist:es5": "del-cli ./dist-es5 && cross-env BABEL_ENV=es5 babel --config-file ./.babelrces5 ./src --out-dir ./dist-es5",
     "dist:modules": "del-cli ./dist-modules && cross-env BABEL_ENV=modules babel ./src --out-dir ./dist-modules",
     "preversion": "npm run test && npm run test:lint",
     "prepublishOnly": "npm run dist:es6 && npm run dist:modules && npm run dist:css",
@@ -24,7 +25,7 @@
   "module": "dist-es6",
   "jsnext:main": "dist-es6",
   "devDependencies": {
-    "@babel/cli": "^7.8.3",
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.6.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.6.0",
